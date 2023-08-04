@@ -127,7 +127,7 @@ func (state *state) modifyLocalState() {
 			logging.LogWarning(fmt.Sprintf("Can't register service %s: %s",
 				localService.Name, e.Error()))
 		} else {
-			logging.LogInfo(fmt.Sprintf("Updating local service %s", localService.Name))
+			logging.LogDebug(fmt.Sprintf("Updating local service %s", localService.Name))
 			keys[localService.Name] = localService
 		}
 	}
@@ -266,6 +266,7 @@ func refresh(configFile string) (retState *state, retError error) {
 		return state, err
 	}
 	state.saveLastState() // always
+    logging.LogDebug("Refresh done")
 	return state, nil
 }
 
