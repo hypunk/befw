@@ -266,7 +266,7 @@ func refresh(configFile string) (retState *state, retError error) {
 		return state, err
 	}
 	state.saveLastState() // always
-    logging.LogDebug("Refresh done")
+	logging.LogDebug("Refresh done")
 	return state, nil
 }
 
@@ -396,7 +396,7 @@ func (state *state) fillStaticIPSets() error {
 						if newClient, e := kv2ServiceClient(kvp); e == nil {
 							newClient.appendToIpsetIf(&state.StaticIPSets, set.Name)
 						} else {
-							logging.LogWarning("Can't add pre-defined ipset", set, e.Error())
+							logging.LogWarning("Can't add pre-defined ipset ", set, ": ", e.Error())
 						}
 					}
 
